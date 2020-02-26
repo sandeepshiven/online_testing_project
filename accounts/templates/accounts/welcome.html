@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/jquery.countdown.css">
+    
+    <script type="text/javascript" src="js/jquery.plugin.js"></script> 
+    <script type="text/javascript" src="js/jquery.countdown.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome!</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+        <center><h1>Welcome!</h1></center><br/>
+        <center><h1>{{ user.username }}</h1></center><br/>
+    {% else %}
+        <center><h1>Welcome!</h1></center><br/>
+        <center><h1>Anonymous</h1></center><br/>
+    {% endif %}
+    <center>
+        <form action="{% url 'logout' %}" method = "POST" >
+            {% csrf_token %}
+            <input type="submit" value="Logout" />
+            
+            
+            
+            
+        </form>
+    </center><br/>
+    
+    <!-- <script>
+        var newYear = new Date(); 
+        newYear = new Date(newYear.getFullYear() + 1, 1 - 1, 1); 
+        $('#defaultCountdown').countdown({until: newYear}); 
+        
+        $('#removeCountdown').click(function() { 
+            var destroy = $(this).text() === 'Remove'; 
+            $(this).text(destroy ? 'Re-attach' : 'Remove'); 
+            $('#defaultCountdown').countdown(destroy ? 'destroy' : {until: newYear}); 
+        });
+    </script> -->
+    
+    <div id="defaultCountdown" >
+        <!-- <span class="countdown-row countdown-show4">
+            <span class="countdown-section">
+                <span class="countdown-amount">334</span>
+                <span class="countdown-period">Days</span>
+            </span>
+            <span class="countdown-section">
+                <span class="countdown-amount">6</span>
+                <span class="countdown-period">Hours</span>
+            </span><span class="countdown-section">
+                <span class="countdown-amount">3</span>
+                <span class="countdown-period">Minutes</span>
+            </span><span class="countdown-section">
+                <span class="countdown-amount">54</span>
+                <span class="countdown-period">Seconds</span>
+            </span>
+        </span> -->
+    </div>
+</body>
+</html>
